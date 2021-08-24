@@ -1,0 +1,11 @@
+.NumberArea {
+  display: grid ;
+  grid-template: repeat(1,1fr)/repeat(3,1fr);
+   margin: 2rem auto 2rem auto;
+  .numberColumn {
+    .Button {
+      margin: 0.05rem;
+    }
+  }
+
+}

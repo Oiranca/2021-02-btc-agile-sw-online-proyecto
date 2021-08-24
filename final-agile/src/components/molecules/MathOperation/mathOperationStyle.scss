@@ -1,0 +1,10 @@
+.MathOperation {
+  display: grid ;
+  grid-template: repeat(3,1fr)/repeat(1,1fr);
+  margin: 2rem auto 2rem auto;
+  .operatorColumn {
+    .Button {
+      margin: 0.05rem;
+    }
+  }
+}

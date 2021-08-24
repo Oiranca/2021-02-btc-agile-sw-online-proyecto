@@ -1,0 +1,16 @@
+.DataAndResultArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .FieldInput[name='result'] {
+    background-color: #ecebeb;
+    border: 1px solid black;
+
+  }
+
+  .FieldInput[name='data'] {
+    text-align: end;
+    border: 1px solid black;
+
+  }
+}

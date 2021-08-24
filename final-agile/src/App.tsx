@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import { CalculateForm } from './components/organisms/CalculateForm/CalculateForm';
+import { CalculatorView } from './components/page/CalculatorView';
 
 function App() {
   return (
     <>
       <div className="App">
-        <CalculateForm />
+        <CalculatorView />
       </div>
     </>
   );

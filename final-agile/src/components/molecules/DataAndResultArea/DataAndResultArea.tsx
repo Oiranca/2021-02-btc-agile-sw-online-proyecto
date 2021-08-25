@@ -2,55 +2,49 @@ import * as React from 'react';
 import './dataAndResultArea.scss';
 import { NumberArea } from '../NumberArea/NumberArea';
 import { MathOperation } from '../MathOperation/MathOperation';
+import { operation } from '../../../utils/operation';
 
 export const DataAndResultArea: React.FC = () => {
   const [value, setValue] = React.useState<string[]>([]);
   const [result, setResult] = React.useState<string>('');
+  const [lastItem, setLastItem] = React.useState<string>('');
+  const [hasOperator, setHasOperator] = React.useState<boolean>(false);
   const isANumber = RegExp(/\d/);
 
-  const operation = (previousNumber: string, lastNumber: string, operator: string) => {
-    switch (operator) {
-      case '+':
-        return (Number(previousNumber) + Number(lastNumber)).toString();
-      case '-':
-        return (Number(previousNumber) - Number(lastNumber)).toString();
-      case '*':
-        return (Number(previousNumber) * Number(lastNumber)).toString();
-      default:
-        return '';
-    }
-  };
-
   const calculate = (values: string[]) => {
-    let lastNumber = '';
-    let previousNumber = '';
-    let operator = '';
+    let initialNumbers = '';
+    let lastNumbers = '';
+    let typeOperation = '';
+    let totalOperation = '';
     for (const element of values) {
       if (isANumber.test(element)) {
-        lastNumber += element;
-      } else if (!isANumber.test(element)) {
-        if (element === '=') {
-          lastNumber = operation(previousNumber, lastNumber, operator);
-        } else if (operator === '') {
-          previousNumber = lastNumber;
-          lastNumber = '';
-          operator = element;
-        } else {
-          previousNumber = operation(previousNumber, lastNumber, operator);
-          lastNumber = '';
+        typeOperation === '' ? (initialNumbers += element) : (lastNumbers += element);
+      } else if (!isANumber.test(element) && element !== '') {
+        if (typeOperation === '' && element !== '=') {
+          typeOperation = element;
+        } else if (element === '=') {
+          totalOperation = operation(lastNumbers, initialNumbers, typeOperation);
         }
       }
     }
-    return lastNumber;
+    return totalOperation;
   };
-
   const handleOnClick = (e: string) => {
-    setValue([...value, e]);
+    if (isANumber.test(e)) {
+      setValue([...value, e]);
+      setLastItem(e);
+    } else if (isANumber.test(lastItem) && !hasOperator) {
+      setValue([...value, e]);
+      setHasOperator(true);
+    } else if (isANumber.test(lastItem) && e === '=') {
+      setValue([...value, e]);
+      setHasOperator(false);
+    }
   };
 
   React.useEffect(() => {
     if (value.includes('=')) {
-      setResult(calculate(value)!);
+      setResult(calculate(value));
       setValue(['']);
     }
   }, [value]);

@@ -2,16 +2,24 @@ import * as React from 'react';
 import { Button } from '../../atoms/Button/Button';
 import './mathOperationStyle.scss';
 
-export const MathOperation: React.FC = () => (
-  <div className={'MathOperation'}>
-    <div className={'operatorColumn'}>
-      <Button text={'+'} />
+type MathOperationProps = {
+  value: (value: string) => void;
+};
+export const MathOperation: React.FC<MathOperationProps> = ({ value }) => {
+  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    value(e.currentTarget.innerText);
+  };
+  return (
+    <div className={'MathOperation'}>
+      <div className={'operatorColumn'}>
+        <Button text={'+'} onClick={handleOnClick} />
+      </div>
+      <div className={'operatorColumn'}>
+        <Button text={'-'} onClick={handleOnClick} />
+      </div>
+      <div className={'operatorColumn'}>
+        <Button text={'*'} onClick={handleOnClick} />
+      </div>
     </div>
-    <div className={'operatorColumn'}>
-      <Button text={'-'} />
-    </div>
-    <div className={'operatorColumn'}>
-      <Button text={'*'} />
-    </div>
-  </div>
-);
+  );
+};

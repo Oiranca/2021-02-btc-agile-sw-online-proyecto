@@ -21,6 +21,8 @@ module.exports = {
         tsconfigRootDir: __dirname
       },
       rules: {
+        'prefer-const': 'off',
+        'no-unused-expressions': 'off',
         'react-hooks/exhaustive-deps': 'off',
         'no-restricted-syntax': 'off',
         '@typescript-eslint/no-unused-vars': 'off',

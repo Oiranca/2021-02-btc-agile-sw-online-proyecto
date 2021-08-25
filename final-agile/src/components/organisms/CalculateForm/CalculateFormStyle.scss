@@ -1,4 +1,4 @@
-.calculator {
+.CalculateForm {
   margin: 2rem auto 2rem auto;
   padding: 0.5rem;
   height: fit-content;
@@ -16,37 +16,5 @@
     }
   }
 
-  .operation {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: lightgrey;
-    border: 2px solid black;
-
-    .digit {
-      .NumberArea {
-        margin: 0.05rem;
-        padding: 0.5rem;
-
-        .Button {
-          margin: 0.5rem;
-          padding: 20px;
-        }
-      }
-    }
-
-    .operator {
-      margin: 0.05rem;
-      padding: 0.5rem;
-      border-left: 2px solid black;
-
-      .MathOperation {
-        .Button {
-          margin: 0.5rem;
-          padding: 1rem 5rem;
-        }
-      }
-    }
-  }
 
 }

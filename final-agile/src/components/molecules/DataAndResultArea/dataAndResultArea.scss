@@ -1,16 +1,60 @@
 .DataAndResultArea {
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .FieldInput[name='result'] {
-    background-color: #ecebeb;
-    border: 1px solid black;
 
+  .resultArea {
+    width: calc(100% - 5rem);
+    margin: 2rem auto 2rem auto;
+
+    .result {
+      background-color: #ecebeb;
+      border: 1px solid black;
+      margin: 5px;
+      padding: 2rem;
+    }
+
+    .data {
+      background-color: #ffffff;
+      border: 1px solid black;
+      margin: 5px;
+      padding: 2rem;
+
+    }
   }
 
-  .FieldInput[name='data'] {
-    text-align: end;
-    border: 1px solid black;
 
+  .operation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: lightgrey;
+    border: 2px solid black;
+
+    .digit {
+      .NumberArea {
+        margin: 0.05rem;
+        padding: 0.5rem;
+
+        .Button {
+          margin: 0.5rem;
+          padding: 20px;
+        }
+      }
+    }
+
+    .operator {
+      margin: 0.05rem;
+      padding: 0.5rem;
+      border-left: 2px solid black;
+
+      .MathOperation {
+        .Button {
+          margin: 0.5rem;
+          padding: 1rem 5rem;
+        }
+      }
+    }
   }
 }

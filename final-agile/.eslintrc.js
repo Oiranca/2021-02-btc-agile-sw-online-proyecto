@@ -21,8 +21,11 @@ module.exports = {
         tsconfigRootDir: __dirname
       },
       rules: {
+        'react-hooks/exhaustive-deps': 'off',
+        'no-restricted-syntax': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
         'react/jsx-curly-brace-presence': 0,
-        'react/jsx-boolean-value':['off'],
+        'react/jsx-boolean-value': ['off'],
         'no-param-reassign': 'off',
         'react/require-default-props': 'off',
         'react/jsx-props-no-spreading': ['off'],
